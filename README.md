@@ -13,4 +13,4 @@ CV刚入门，所以方法比较简单
 
 数据增强：一些常规的翻转，加噪，亮度增强等；训练集size x 1.15 + randomcrop，验证集/测试集size x 1.35 + centercrop；mixup + cutmix
 
-### 由于举办方要求，仓库不提供数据集下载
+### 由于举办方要求，仓库不提供数据集下载，[官方网站](http://challenge.xfyun.cn/topic/info?type=crop)
