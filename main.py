@@ -117,21 +117,16 @@ class Set_data(data.Dataset):
             assert len(self.id) == len(self.label)
 
     def __getitem__(self, index):
+        
+        img_path = os.path.join(self.root, self.id[index])
+        img = cv2.imread(img_path)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        if self.transform is not None:
+            img = self.transform(image=img)['image']
         if self.train:  # train
-            img_path = os.path.join(self.root, self.id[index])
-            img = cv2.imread(img_path)
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            if self.transform is not None:
-                img = self.transform(image=img)['image']
             label = torch.tensor(self.label[index])
             return img, label
         else:                       # test
-            img_path = os.path.join(self.root, self.id[index])
-            img = cv2.imread(img_path)
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            if self.transform is not None:
-                img = self.transform(image=img)['image']
-            # label = torch.tensor(self.label[index])
             return img
 
     def __len__(self):
